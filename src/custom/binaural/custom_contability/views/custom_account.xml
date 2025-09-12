@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="custom_account_payment_form" model="ir.ui.view">
+    <field name="name">account.custom.account.payment.form</field>
+    <field name="model">account.payment</field>
+    <field name="inherit_id" ref="account.view_account_payment_form"/>
+    <field name="arch" type="xml">
+      <!-- Buttons for approve payment -->
+      <xpath expr="//header" position="inside">
+        <button name="action_approve_payment" 
+                string="Aprobar Pago" 
+                type="object" 
+                class="btn btn-primary" 
+                attrs="{'invisible': ['|', ('show_double_validation', '=', False), ('double_validation_approved', '=', True)]}"
+                groups="account.group_account_manager" 
+        />
+      </xpath>
+      <!-- Show double validation and approve by Finanzas -->
+      <xpath expr="//field[@name='destination_journal_id']" position="after">
+        <field 
+            name="double_validation_approved"
+            attrs="{'invisible': [('show_double_validation', '=', False)]}"
+        />
+        <field name="approved_by" 
+               attrs="{'invisible': [('double_validation_approved', '=', False)]}"
+        />
+        <field name="show_double_validation" invisible="1"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

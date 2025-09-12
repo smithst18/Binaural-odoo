@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="res_config_settings_view_form_inherit_custom" model="ir.ui.view">
+      <field name="name">res.config.settings.view.form.inherited_custom</field>
+      <field name="model">res.config.settings</field>
+      <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+      <field name="arch" type="xml">
+
+        <!-- Insertamos después del campo "has_accounting_entries" -->
+        <xpath expr="//field[@name='has_accounting_entries']" position="after">
+          <div class="app_settings_block"
+               data-string="Custom Contabilidad"
+               data-key="custom_contability"
+               groups="base.group_system">
+
+            <h2>Pagos</h2>
+
+            <div class="row mt16 o_settings_container">
+              <div class="col-12 col-lg-6 o_setting_box">
+                <div class="o_setting_left_pane">
+                  <!-- show group if checkbox is True -->
+                  <field name="double_validation"/>
+                </div>
+                <div class="o_setting_right_pane">
+                  <label for="double_validation"/>
+                  <div class="text-muted">
+                    Activa la doble validación de pagos.  
+                    Si está habilitada, podrás definir un límite en el cual los pagos requerirán validación adicional.
+                  </div>
+
+                  <!-- show group if checkbox is True -->
+                  <div class="content-group"
+                       attrs="{'invisible': [('double_validation', '=', False)]}">
+                    <div class="row mt16">
+                      <label for="double_validation_limit" class="col-lg-6 o_light_label"/>
+                      <field name="double_validation_limit" class="col-lg-6"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>
