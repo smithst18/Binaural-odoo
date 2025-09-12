@@ -23,9 +23,9 @@
     ],
     "demo": [
     ],
-    # 'tests': [
-    #     'tests/test_account_payment.py',
-    # ],
+    'tests': [
+        'tests/test_account_payment.py',
+    ],
     "assets": {
     },
     "installable": True,
