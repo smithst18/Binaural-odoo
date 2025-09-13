@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--
+            #######################
+            # MENUS CONFIGURATION #
+            #######################
+        -->
+        <menuitem id="hr.menu_hr_absence" 
+                  name="Ausencias" 
+                  parent="hr.menu_human_resources_configuration"
+        />
+
+        <!-- meny & action absence reason -->
+        <record id="action_hr_absence_reason" model="ir.actions.act_window">
+            <field name="name">Motivo de Ausencia</field>
+            <field name="res_model">hr.absence.reason</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_hr_absence_reason" 
+                  name="Motivo de Ausencia" 
+                  parent="hr.menu_hr_absence" 
+                  action="action_hr_absence_reason" 
+                  sequence="10"
+        />
+
+        <!--
+            #######################
+            # MENU REPORTES #
+            #######################
+        -->
+        <menuitem id="hr.menu_hr_reports" 
+                  name="Reportes" 
+                  parent="hr.menu_hr_root"
+        />
+
+        <record id="action_hr_absence_graph" model="ir.actions.act_window">
+            <field name="name">Ausencias por Motivo</field>
+            <field name="res_model">hr.leave</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="hr_absence_reason_graph"/>
+        </record>
+        <menuitem id="hr.menu_report_absence_by_reason"
+                  name="Ausencias por Motivo"
+                  parent="hr.menu_hr_reports"
+                  action="action_hr_absence_graph"
+        />
+
+    </data>
+</odoo>

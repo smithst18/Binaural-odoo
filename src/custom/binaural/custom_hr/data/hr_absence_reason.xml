@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data noupdate="1">
+  
+    <record id="absence_reason_vacaciones" model="hr.absence.reason">
+        <field name="name">Vacaciones</field>
+        <field name="code">VAC</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="absence_reason_enfermedad" model="hr.absence.reason">
+        <field name="name">Enfermedad</field>
+        <field name="code">ENF</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="absence_reason_permiso" model="hr.absence.reason">
+        <field name="name">Permiso Personal</field>
+        <field name="code">PER</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="absence_reason_maternidad" model="hr.absence.reason">
+        <field name="name">Maternidad / Paternidad</field>
+        <field name="code">MAT</field>
+        <field name="active">True</field>
+    </record>
+
+  </data> 
+</odoo>
