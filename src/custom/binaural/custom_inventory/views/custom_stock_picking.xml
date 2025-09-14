@@ -21,7 +21,7 @@
                 <attribute name="attrs">{'invisible': ['|', ('state', 'in', ('draft', 'done', 'cancel')), ('package_consolidation', '=', True)]}</attribute>
             </xpath>
             <xpath expr="//field[@name='origin']" position="after">
-                <field name="package_consolidation" invisible="0" readonly="0"/>
+                <field name="package_consolidation" invisible="1" readonly="1"/>
             </xpath>
         </field>
     </record>
