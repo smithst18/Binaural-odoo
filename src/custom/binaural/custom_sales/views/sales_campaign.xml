@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- form view -->
+        <record id="sale_campaign_form" model="ir.ui.view">
+            <field name="name">sale.campaign.form.view</field>
+            <field name="model">promotion.campaign</field>
+            <field name="arch" type="xml">
+                <form string="Campaña Promocional">
+                    <header>
+                        <button name="action_start_campaign" 
+                                type="object" 
+                                string="Comenzar Campaña" 
+                                class="btn btn-primary"
+                                attrs="{'invisible': [('status', '!=', 'draft')]}"
+                        />
+                        <button name="action_end_campaign" 
+                                type="object" 
+                                string="Finalizar Campaña" 
+                                class="btn btn-primary"
+                                attrs="{'invisible': [('status', '!=', 'active')]}"
+                        />
+                        <field  name="status" 
+                                widget="statusbar" 
+                                statusbar_visible="draft,active,end"
+                        />
+                    </header>
+                    <sheet>
+                        <group string="Campaña Promocional" name="main_group">
+                            <group>
+                                <field name="name" placeholder="Nombre"/>
+                                <field name="start_date" placeholder="01/01/2025"/>
+                                <field name="end_date" placeholder="01/01/2025"/>
+                                <field name="days"/>
+                            </group>
+                            <group>
+                                <field name="discount" widget="percentage"/>
+                                <field name="description" placeholder="Descripción de la campaña"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- tree view -->
+        <record id="sale_campaign_tree" model="ir.ui.view">
+            <field name="name">sale.campaign.tree.view</field>
+            <field name="model">promotion.campaign</field>
+            <field name="arch" type="xml">
+                <tree string="" >
+                  <field name="name"/>
+                  <field name="start_date"/>
+                  <field name="end_date"/>
+                  <field name="discount"/>
+                  <field name="days"/>
+                  <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- search view -->
+        <record id="sale_campaign_search" model="ir.ui.view">
+            <field name="name">sale.campaign.search.view</field>
+            <field name="model">promotion.campaign</field>
+            <field name="arch" type="xml">
+                <search string="Campañas">
+                    <!-- <field name="name" string="Motivo"/> -->
+                </search>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

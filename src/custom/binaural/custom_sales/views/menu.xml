@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--
+            #######################
+            # MENU SALES PRODUCTS CAMPAIGN #
+            #######################
+        -->
+
+        <record id="action_sale_promotion_campaign" model="ir.actions.act_window">
+            <field name="name">Campañas</field>
+            <field name="res_model">promotion.campaign</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_sale_promotion_campaign"
+                  name="Campañas"
+                  parent="sale.product_menu_catalog"
+                  action="action_sale_promotion_campaign"
+        />
+
+    </data>
+</odoo>
