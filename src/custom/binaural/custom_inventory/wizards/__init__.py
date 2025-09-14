@@ -1,0 +1,1 @@
+from . import consolidate_wizard

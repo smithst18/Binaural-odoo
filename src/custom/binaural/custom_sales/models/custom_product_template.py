@@ -49,7 +49,7 @@ class CustomInheritProductTemplate(models.Model):
             ('status', '=', 'active'),
         ], limit=1)
         for record in self:
-            if active_campaign:
+            if active_campaign and record.available_for_campaign:
                 raise ValidationError(
                     _("No se pueden agregar productos mientras haya una campaña de promoción en curso.")
                 )

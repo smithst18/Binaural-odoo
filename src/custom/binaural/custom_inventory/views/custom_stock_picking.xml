@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="stock_view_picking_form_custom_package" model="ir.ui.view">
+        <field name="name">stock.view_picking_form.custom.package</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="after">
+                <button name="%(custom_inventory.action_consolidate_package_wizard)d"
+                        string="Consolidar Paquetes"
+                        type="action"
+                        class="btn-primary"
+                        attrs="{'invisible':[('state','in',['done','cancel'])]}"/>
+            </xpath>
+            
+            <xpath expr="//page[@name='detailed_operations']/button[@name='action_put_in_pack']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('state', 'in', ('draft', 'done', 'cancel')), ('package_consolidation', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//page[@name='operations']/button[@name='action_put_in_pack']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('state', 'in', ('draft', 'done', 'cancel')), ('package_consolidation', '=', True)]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="package_consolidation" invisible="0" readonly="0"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
