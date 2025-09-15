@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- form view -->
+        <record id="poss_session_resume_form_view" model="ir.ui.view">
+            <field name="name">pos.session_resume.form.view</field>
+            <field name="model">pos.session_resume</field>
+            <field name="arch" type="xml">
+                <form string="Resumen de la sesión" >
+                    <header/>
+                    <sheet>
+                        <group string="Resumen de la sesión" name="main_group">
+                            <group string="Sesión">
+                                <field  name="pos_session_id"/>
+                                <field  name="user_id"/>
+                                <field  name="sesion_duration"/>
+                            </group>
+                            <group string="Ventas">
+                                <field  name="total_sales"/>
+                                <field  name="transactions_count"/>
+                            </group>
+                        </group>
+                        <group string="" name="">
+                            <group string="Productos Más Vendidos">
+                                <field  name="total_products_amount"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Productos Más Vendidos">
+                                  <field  name="top_product_ids" readonly="1">
+                                      <tree>
+                                          <field name="product_id"/>
+                                          <field name="quantity"/>
+                                      </tree>
+                                  </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
